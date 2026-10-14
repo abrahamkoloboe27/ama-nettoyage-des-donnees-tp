@@ -1,0 +1,11 @@
+# Thème du tableau de bord (charte AMA) : uv run streamlit run dashboard/app.py
+[theme]
+base = "light"
+primaryColor = "#0B4F9C"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#E8F1FB"
+textColor = "#1F2937"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false
