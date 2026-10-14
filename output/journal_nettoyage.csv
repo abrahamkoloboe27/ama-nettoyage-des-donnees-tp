@@ -1,0 +1,25 @@
+étape,règle,colonne,lignes,décision
+types,"prix stocké en texte (espaces, « FCFA »)",prix_unitaire_fcfa,9101,convertir en Int64 (\D retiré)
+types,poids avec virgule décimale,poids_kg,2383,convertir en float64
+types,date au format américain mm/jj,date_commande,545,relire en mm/jj (fenêtre de septembre)
+types,villes hors référentiel,ville,7555,ramener au référentiel
+types,paiements hors référentiel,moyen_paiement,6066,ramener au référentiel
+types,statuts hors référentiel,statut,1511,ramener au référentiel
+types,catégorie mal encodée (« TÃ©lÃ©phonie »),categorie,351,encode cp1252 / decode utf-8
+types,téléphone hors format 01XXXXXXXX,telephone,12591,reformater
+types,"téléphone invalide (« 97 », étranger, 0000000000)",telephone,967,NaN
+types,e-mail invalide,email,221,NaN
+doublons,lignes identiques,toutes,212,supprimer
+doublons,"même commande, plusieurs versions",commande_id,100,garder la plus récente (maj_le)
+doublons,"double clic (même client, même panier, < 10 s)",commande_id,54,"garder + drapeau double_clic, exclure du CA"
+aberrantes,quantité < 1 sur une commande non retournée,"quantite, montant_fcfa",86,corriger le signe
+aberrantes,montant ≠ quantité × prix,prix_unitaire_fcfa,76,prix = montant ÷ quantité
+aberrantes,poids > 200 kg,poids_kg,153,÷ 1000 (saisi en grammes)
+aberrantes,"note hors 1–5 (0, 30, 40, 50)",note_client,694,NaN
+aberrantes,livraison avant la commande ou en 1900,date_livraison,90,NaT
+aberrantes,quantité ≥ 50 (revendeur ou saisie ?),quantite,23,garder + drapeau gros_volume
+manquants,"date_livraison vide (annulée, en cours)",date_livraison,7436,laisser vide (structurel)
+manquants,code_promo vide,code_promo,45768,« aucun » (pas de promotion)
+manquants,e-mail vide,email,11024,laisser vide + indicateur a_email
+manquants,poids vide (MAR selon la catégorie),poids_kg,1510,médiane par catégorie + indicateur
+manquants,note vide sur commande livrée (MNAR),note_client,11597,laisser vide + signaler le biais
