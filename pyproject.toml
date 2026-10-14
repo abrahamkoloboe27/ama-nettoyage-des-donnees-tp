@@ -1,0 +1,24 @@
+[project]
+name = "tp-nettoyage-des-donnees"
+version = "1.0.0"
+description = "TD « Nettoyage des données » (AMA, module 13) : explorer, typer, normaliser, dédoublonner, traiter aberrantes et manquants, tester, puis comparer les décisions."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=3.0.6,<3.1",
+    "numpy>=2.0",
+    "pyarrow>=17",
+    "matplotlib>=3.8",
+    "scikit-learn>=1.5",
+    "rapidfuzz>=3.9",
+    "streamlit>=1.50",
+    "jupyterlab>=4.2",
+    "ipykernel>=6.29",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.21,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "tp_nettoyage"

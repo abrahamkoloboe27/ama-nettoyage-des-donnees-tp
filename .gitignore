@@ -1,0 +1,12 @@
+# Fichiers produits par le notebook
+output/*
+!output/README.md
+
+# Python / Jupyter
+__pycache__/
+*.py[oc]
+.ipynb_checkpoints/
+.venv/
+.idea/
+.vscode/
+.DS_Store
